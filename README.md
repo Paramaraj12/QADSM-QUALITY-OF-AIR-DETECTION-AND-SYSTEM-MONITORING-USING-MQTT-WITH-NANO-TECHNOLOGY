@@ -53,3 +53,59 @@ and eradicating or controlling its root cause.
 5. To improvise the concept networking concept from that
 of the existing system in order to improvise in faster
 data transmission.
+
+PROPOSED SYSTEM:
+
+In the proposed system the disadvantages of
+the existing system such as high power
+consumption, poor data transmission rate,
+usage of online IoT platforms, data accessing
+technique, circuit complexity etc.
+
+o In the proposed system, the Microcontroller
+used is NODEMCU whose power
+consumption is only 3.4-3.6v. It doesn’t need
+an extra WIFI attachment to the circuit as it
+has WIFI embedded in it. It has on board
+antenna and RF balun which is helpful in
+long distance data transmission.
+
+o The data from each node is accessed via the
+gateway concept wherein the sensor from a
+particular region are connected to a single
+module and with the help of that module the
+data from the corresponding modules could
+be easily accessed. This process eliminates
+the need for configuring each and every
+module to the website. It only needs in
+configuring only the gateway module to the
+website which reduces the coding
+complexity.
+
+o In a single router 16 modules could be
+connected, so an area of 6.5km could be
+covered in a single router. This technique
+would be effectively used to cover an entire
+district with a minimum number of routers.
+
+ In this system we are using the Google firebase
+console and also 000webhost.com for website
+creation which enables the end user to view the
+data. This reduces the dependency of online
+platforms for data viewing.
+
+ Another method used here is multiple client server
+method. This method helps in easy access of data
+from any module at any time without disturbing
+other module data output.
+
+ In earlier version of air quality monitoring, the
+HTTP protocol has been used which lead to
+insecurity of the data. In order to secure the data
+MQTT protocol has been used in the proposed
+system. This protocol has so far been theoretically
+explained in the using it in air quality monitoring.
+This protocol is an ISO standard publish subscribe
+based messaging protocol. It is designed for
+connections with remote locations, which would be
+useful to collect data in any region.
