@@ -8,7 +8,7 @@ const char* server = "api.000webhostapp.com";
 
 #define PIN 0          //pin where the dht11 is connected
  
-DHT dht(PIN, PIN11);
+GAS sense(PIN, PIN11);
 
 WiFiClient client;
  
