@@ -4,6 +4,7 @@ Hi Guys, This is the New Technology that Enables the Low Power Consumption, redu
           In India The Smart City Project That  Will Enclose With the Nano Technology.In 2023 The Whole India villages will use the most of Nano Materials.  
 
 INTRODUCTION:
+
 Air pollution is a major environmental health threat
 and a risk factor for both acute and chronic respiratory disease. Outdoor
 air pollution is large and increasing consequence of the inefficient
@@ -16,7 +17,9 @@ including black carbon, methane, and ozone, are responsible for a
 substantial fraction of climate change as well as for a significant
 proportion of air-pollution related deaths and diseases that kill some 7
 million people per year.
+
 CASE SCENARIO:
+
 A Cross sectional study was conducted among the
 people of Kolkata to investigate about the Vehicular pollution Impact on
 them during the period 2007-2010. It was conducted in a place where no
@@ -33,6 +36,7 @@ According to white paper on pollution prepared by
 Ministry of Environment and Forests states that the ambient air quality of
 data of Delhi shows very high value of suspended particles which as
 beyond the permissible levels from the last several years continuously.
+
 OBJECTIVE:
 
 1. To monitor the increasing level of toxic gases in the
