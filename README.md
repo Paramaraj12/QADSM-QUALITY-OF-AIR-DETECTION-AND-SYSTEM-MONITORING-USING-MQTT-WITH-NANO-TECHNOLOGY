@@ -1,7 +1,8 @@
-Hi Guys, This is the New Technology that Enables the Low Power Consumption, reduction Of complexity and reduce the size in the IoT Stream Development.
+Hi Guys, This is the New Technology that Enables the **Low Power Consumption**, reduction Of complexity and reduce the size in the IoT Stream Development.
  Feature Technologies included
-      Nano Gas Sensors
-          In India The Smart City Project That  Will Enclose With the Nano Technology.In 2023 The Whole India villages will use the most of Nano Materials.  
+      **Nano Gas Sensors**
+          In India The **Smart City** Project That  Will Enclose With the Nano Technology.In 2023 The Whole India villages will use the most of Nano Materials.  
+IMPORTANT NOTE- *****The nodemcu and the nano gas sensor chip design is developing by the CADENCE IC Design tool****** 
 
 INTRODUCTION:
 
@@ -18,7 +19,7 @@ substantial fraction of climate change as well as for a significant
 proportion of air-pollution related deaths and diseases that kill some 7
 million people per year.
 
-CASE SCENARIO:
+**CASE SCENARIO:**
 
 A Cross sectional study was conducted among the
 people of Kolkata to investigate about the Vehicular pollution Impact on
@@ -37,7 +38,7 @@ Ministry of Environment and Forests states that the ambient air quality of
 data of Delhi shows very high value of suspended particles which as
 beyond the permissible levels from the last several years continuously.
 
-OBJECTIVE:
+**OBJECTIVE:**
 
 1. To monitor the increasing level of toxic gases in the
 atmosphere continuously.
@@ -54,7 +55,7 @@ and eradicating or controlling its root cause.
 of the existing system in order to improvise in faster
 data transmission.
 
-PROPOSED SYSTEM:
+**PROPOSED SYSTEM:**
 
 In the proposed system the disadvantages of
 the existing system such as high power
