@@ -6,9 +6,9 @@ const char *ssid =  "Paramaraj12";     // replace with your wifi ssid and wpa2 k
 const char *pass =  "************";
 const char* server = "api.000webhostapp.com";
 
-#define PIN 0          //pin where the dht11 is connected
+#define PIN 0          //pin where the d0 is connected
  
-GAS sense(PIN, PIN11);
+GAS sense(PIN, D0);
 
 WiFiClient client;
  
@@ -37,7 +37,7 @@ void setup()
 void loop() 
 {
   
-      float h = dht.readPPM();
+      float h = gas.readPPM();
       
               if (isnan(h)) 
                  {
@@ -66,9 +66,9 @@ void loop()
                              client.print(postStr);
  
                              Serial.print("PPM: ");
-                             Serial.print(t);
+                             Serial.print(d1);
                              Serial.print(" PPM: ");
-                             Serial.print(h);
+                             Serial.print(d0);
                              Serial.println("%. Send to yourwebpage.");
                         }
           client.stop();
