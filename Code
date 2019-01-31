@@ -1,80 +1,93 @@
+//library
 #include <ESP8266WiFi.h>
- 
-String apiKey = "www.000webhost.com";     //  Enter your Write API key from YourWebsite
+#include "Adafruit_MQTT.h"
+#include "Adafruit_MQTT_Client.h"
 
-const char *ssid =  "Paramaraj12";     // replace with your wifi ssid and wpa2 key
-const char *pass =  "************";
-const char* server = "api.000webhostapp.com";
+//input pin
 
-#define PIN 0          //pin where the d0 is connected
- 
-GAS sense(PIN, D0);
+int sensor=A0;
+
+//WiFi Access Point
+
+#define WLAN_SSID       "Jarvish"
+#define WLAN_PASS       "*********"
+
+//Adafruit.io Setup
+
+#define AIO_SERVER      "********"
+#define AIO_SERVERPORT  ******                   
+#define AIO_USERNAME    "******"
+#define AIO_KEY         "**************************"
+
+//ESP8266 WiFiClient class to connect to the MQTT server
 
 WiFiClient client;
- 
-void setup() 
-{
-       Serial.begin(115200);
-       delay(10);
-       dht.begin();
- 
-       Serial.println("Connecting to ");
-       Serial.println(ssid);
- 
- 
-       WiFi.begin(ssid, pass);
- 
-      while (WiFi.status() != WL_CONNECTED) 
-     {
-            delay(500);
-            Serial.print(".");
-     }
-      Serial.println("");
-      Serial.println("WiFi connected");
- 
-}
- 
-void loop() 
-{
-  
-      float h = gas.readPPM();
-      
-              if (isnan(h)) 
-                 {
-                     Serial.println("Failed to read from Nano Gas sensor!");
-                      return;
-                 }
 
-                         if (client.connect(server,80))   // 
-                      {  
-                            
-                             String postStr = apiKey;
-                             postStr +="&field1=";
-                             postStr += String(t);
-                             postStr +="&field2=";
-                             postStr += String(h);
-                             postStr += "\r\n\r\n";
- 
-                             client.print("POST /update HTTP/1.1\n");
-                             client.print("Host: api.000webhostapp.com\n");
-                             client.print("Connection: close\n");
-                             client.print("X-YOURWEBSITEKEY: "+apiKey+"\n");
-                             client.print("Content-Type: application/x-www-form-urlencoded\n");
-                             client.print("Content-Length: ");
-                             client.print(postStr.length());
-                             client.print("\n\n");
-                             client.print(postStr);
- 
-                             Serial.print("PPM: ");
-                             Serial.print(d1);
-                             Serial.print(" PPM: ");
-                             Serial.print(d0);
-                             Serial.println("%. Send to yourwebpage.");
-                        }
-          client.stop();
- 
-          Serial.println("Waiting...");
+//Setup the MQTT client class by passing in the WiFi client and MQTT server and login details
+
+Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
+
+//Feeding Details
+
+Adafruit_MQTT_Publish photocell= Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/mq-135-gas-sensor");
+
+void MQTT_connect();
+
+void setup() {
+    Serial.begin(115200);
+    delay(10);
+    pinMode(sensor,INPUT);
+    Serial.println(F("Adafruit MQTT demo"));
+    
+// Connect to WiFi access point
+    Serial.println(); Serial.println();
+    Serial.print("Connecting to ");
+    Serial.println(WLAN_SSID);
+    WiFi.begin(WLAN_SSID, WLAN_PASS);
   
-  // minimum 15 sec delay between updates, i've set it to 30 seconds
-  delay(10000);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println();
+  Serial.println("WiFi connected");
+  Serial.println("IP address: "); Serial.println(WiFi.localIP());
+}
+
+uint32_t x=0;
+
+void loop() {
+  MQTT_connect(); 
+// Now we can publish stuff!
+  Serial.print(F("\nSending MQ-135 Gas Sensor val "));
+    Serial.print(x);
+    Serial.print("...");
+  int Sensor_Data=(((0.08205*308)/24)*75)*analogRead(sensor);
+  if (! photocell.publish(Sensor_Data)) {
+    Serial.println(F("Failed"));
+  } else {
+    Serial.println(F("OK!"));
+  }
+delay(1000);
+}
+
+void MQTT_connect() {
+int8_t ret;
+if     (mqtt.connected()) {
+       return;
+  }
+  
+       Serial.print("Connecting to MQTT... ");
+       uint8_t retries = 3;
+while  ((ret = mqtt.connect()) != 0) {
+       Serial.println(mqtt.connectErrorString(ret));
+       Serial.println("Retrying MQTT connection in 5 seconds...");
+       mqtt.disconnect();
+       delay(5000);  
+       retries--;
+       if (retries == 0) {
+        while (1);
+       }
+  }
+  Serial.println("MQTT Connected!");
 }
